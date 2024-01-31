@@ -25,7 +25,10 @@
     "react-native": "0.73.2",
     "react-native-countdown-circle-timer": "^3.2.1",
     "react-native-svg": "14.1.0",
-    "react-native-web": "~0.19.6"
+    "react-native-web": "~0.19.6",
+    "@shopify/flash-list": "1.6.3",
+    "expo-image": "~1.10.5",
+    "expo-asset": "~9.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

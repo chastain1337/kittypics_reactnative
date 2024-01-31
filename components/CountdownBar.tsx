@@ -1,26 +1,18 @@
-import { useState, useEffect } from 'react';
-import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
+import React, { useState, useEffect } from 'react';
+import { CountdownCircleTimer, OnComplete } from 'react-native-countdown-circle-timer'
 import { Text } from '@ui-kitten/components';
 import { CountdownBarProps } from '../models';
 
-export const CountdownBar:React.FC<CountdownBarProps> = ({OnTimerCompleted}): React.ReactElement => {
-    const [iterations, setIterations] = useState(0);
-
+export const CountdownBar:React.FC<CountdownBarProps> = ({OnTimerCompleted, Play, Key}): React.ReactElement => {
     return (
-        <>
         <CountdownCircleTimer
-            isPlaying
+            isPlaying={Play}
+            key={Key}
             duration={5}
             colors={["#8FCC1E","#DB5F63"]}
             colorsTime={[5,0]}
             size={180}
-            onComplete={() => {
-                let newIterations = iterations+1; 
-                setIterations(newIterations)
-                OnTimerCompleted(newIterations)
-                return { shouldRepeat: true, delay: 1 } // repeat animation in 1.5 seconds
-              }}
+            onComplete={() => OnTimerCompleted()}
         >{() => <Text style={{textAlign: "center"}} category='h1' >KITTY PICS</Text>}</CountdownCircleTimer>
-        </>
     );
 };

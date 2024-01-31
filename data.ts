@@ -1,7 +1,13 @@
 import axios, { AxiosResponse } from 'axios';
+import { Pic } from './models';
 
-const apiUrl = process.env.NODE_ENV == "development" ? "https://localhost:7054/" : "http://kittypics-api.onrender.com/";
-// export const getFullMember = async (deviceId:string,generateNew = true) : Promise<Member> => {
-//     const res = await axios.post(`${apiUrl}getFullMember?deviceId=${deviceId}&generateNew=${generateNew}`)
-//     return res.data;
-// }
+const apiUrl = process.env.NODE_ENV == "development" ? "http://192.168.1.10:5215/" : "http://kittypics-api.onrender.com/";
+
+export const getRandomPics = async (count:number) : Promise<Pic[]> => {
+    const res = await axios.get(`${apiUrl}Pics/GetRandomPics?count=${count}`)
+    return res.data;
+}
+
+export const castVote = async (picId:number) : Promise<void> => {
+    await axios.get(`${apiUrl}Pics/Vote?picId=${picId}`)
+}
